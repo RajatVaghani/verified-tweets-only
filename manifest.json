@@ -1,0 +1,39 @@
+{
+  "name": "Verified Tweets Only",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Simple extension to only show verified tweets on Twitter",
+  "icons": {
+    "16": "icons/icon_on.png",
+    "48": "icons/icon_on.png",
+    "128": "icons/icon_on.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "tabs", "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://twitter.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "storage.js", "contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "page_action": {
+    "default_icon": {
+      "19": "icons/icon_on.png",
+      "38": "icons/icon_on.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Verified Tweets Only"
+  }
+}
